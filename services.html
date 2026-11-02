@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="Nancy Beauty Salon offers professional hair,nail,
+    beauty services at affordable prices.">
+    <meta name="keywords" content="Nancy Beauty Salon, hair styling, braiding , nail services,
+    beauty salon">
+    <link rel="stylesheet" href="css_assests/myfirststyle.css">
+    <title>Nancy Beauty Salon - services</title>
+</head>
+<body>
+    <header>
+        <img src="images/Logo.png" width="120">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="enquires.html">Enquiries</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="services.html">Services</a></li>
+            </ul>
+    
+    </nav>
+    </header>
+    <main>
+    <h1>Services we offer</h1>
+    <input type="text" id="searchInput" placeholder="Search for a service...">
+    <button type="button" onclick="searchServices()">Search</button>
+    <p id="searchMessage"></p>
+
+    <section class="service">
+            <img src="images/braids.jpg" alt="hair services" width="300" onclick="openImage(this.src)">
+            <img src="images/nails.jpg" alt="nail services" width="300" onclick="openImage(this.src)">
+            <img src="images/beauty.jpg" alt="beauty services" width="300" onclick="openImage(this.src)">
+            </section>
+
+    <h2>Hair services</h2>
+    <ul class="services-list">
+        <li>Hair styling - R100</li>
+        <li>Braiding - R250</li>
+        <li>Hair washing - R80</li>
+    </ul>
+
+    <h2>Nail services</h2>
+    <ul class="services-list">
+        <li>Manicure - R180</li>
+        <li>Pedicure -R180</li>
+        <li>Nail art - R100</li>
+    </ul>
+
+    <h2>Beauty services</h2>
+    <ul class="services-list">
+        <li>Makeup - R300</li>
+        <li>Eyebrow shaping -  R120</li>
+        <li>Facial treatment - R200</li>
+    </ul>
+    </main>
+<div id="imageLightbox" style="display:none;" onclick="closeImage()">
+    <span>&times;</span>
+
+    <img id="lightboxImage" src="" alt="Large image" onclick="event.stopPropagation()">
+</div>
+<script>
+    function openImage(imageSource){
+        document.getElementById("lightboxImage").src = imageSource;
+        document.getElementById("imageLightbox").style.display = "flex";
+    }
+    function closeImage(){
+        document.getElementById("imageLightbox").style.display = "none";
+    } 
+    function searchServices(){
+        var input = document.getElementById("searchInput").value.toLowercase();
+
+        var services = document.getElementsByClassName("services-list");
+
+        var found =  false;
+        for(var i = 0; i < services.length;i++) {
+            var text = services[i].innerText.toLowercase();
+
+            if(text.includes(input) && input !==""){
+                services[i].style.display = "block";
+                found = true;
+            } else{
+                services[i].style.display = "none";
+            }
+        }
+    if(found){
+        document.getElementById("searchMessage").innerHTML = "";
+    } else{
+        document.getElementById("searchMessage").innerHTML = "No service found."
+}
+  }
+  </script>
+  <script src="js/script.js"></script>
+</body>
+</html>
